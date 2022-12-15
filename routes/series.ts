@@ -10,7 +10,7 @@ router.use(async(req, res, next) => {
     if(token){
         try{
             const payload = jwt.verify(token, jwtSecret)
-            if(payload?.roules.indexOf('restrito')>= 0){
+            if(payload.roles.indexOf('restrito')>= 0){
                 next()
             }else{
                 res.send({ success:false, errors: "wrong credentials"})
