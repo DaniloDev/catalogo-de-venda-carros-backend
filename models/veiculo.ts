@@ -1,18 +1,22 @@
 import mongoose from 'mongoose'
 const VeiculoSchema = new mongoose.Schema({
-    nome: {
+    name: {
         type: String,
         required: true
     },
-    marca: {
+    price: {
         type: String,
         required: true
     },
-    modelo: {
+    brand: {
         type: String,
         required: true
     },
-    foto: {
+    model: {
+        type: String,
+        required: true
+    },
+    photo: {
         type: String,
         required: true
     },

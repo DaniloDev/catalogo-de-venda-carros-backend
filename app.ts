@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 const app = express()
 import routes from './routes';
@@ -19,8 +20,8 @@ app.use(session({
 */
 
 //const cors = require('cors')
-/* PARTE DO CORS
-app.use(cors({
+// PARTE DO CORS
+/*app.use(cors({
     origin: (origin, callback) => {
         if(origin === 'http://server1:8080'){
             callback(null, true)
@@ -31,6 +32,7 @@ app.use(cors({
 }))
 
 */
+app.use(cors())
 app.use(routes)
 
 export default app
