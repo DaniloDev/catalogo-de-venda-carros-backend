@@ -43,7 +43,10 @@ router.post('/', async(req, res) => {
 router.put('/:id', async(req, res) => {
     const veiculo =  await Veiculo.findOne({ _id: req.params.id })
     veiculo.name = req.body.name
-    veiculo.status = req.body.status
+    veiculo.price = req.body.price
+    veiculo.brand = req.body.brand
+    veiculo.model = req.body.model
+    veiculo.photo = req.body.photo
     try{
         await veiculo.save()
         res.send(veiculo)

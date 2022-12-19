@@ -8,14 +8,16 @@ const createInitialUsers = async() => {
     const total = await User.countDocuments({})
     if(total===0){
         const user = new User({
-            username: 'danilo',
+            name: 'Danilo',
+            email: 'danisn2010@gmail.com',
             password: '123456',
             roles: ['restrito', 'admin']
         })
         await user.save()
 
         const user2 = new User({
-            username: 'restrito',
+            name: 'Usuario Restrito',
+            email: 'restrito@gmail.com',
             password: '123456',
             roles: ['restrito']
         })
@@ -25,17 +27,20 @@ const createInitialUsers = async() => {
 
 const post = async(req: Request, res: Response) => {
     const user = req.body
-    const userDb = await User.findOne({ username: user.username})
+    const userDb = await User.findOne({ email: user.email})
     if(userDb){
         if(userDb.password === user.password){
             const payload = {
                 id: userDb._id,
-                username: userDb.username,
+                name: userDb.name,
+                email: userDb.email,
                 roles: userDb.roles
             }
-            jwt.sign(payload, jwtSecret, (err : any, token: any) => {
+            jwt.sign(payload, jwtSecret, (err : any,  token: any) => {
                 res.send({
                     success: true,
+                    name: payload.name,
+                    email: payload.email,
                     token: token 
                 })
             })
