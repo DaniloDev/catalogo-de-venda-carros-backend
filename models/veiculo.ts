@@ -8,6 +8,10 @@ const VeiculoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    previousprice: {
+        type: String,
+        required: true
+    },
     brand: {
         type: String,
         required: true

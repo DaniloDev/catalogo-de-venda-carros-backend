@@ -1,19 +1,13 @@
 import { Router } from "express"
-import Veiculo from '../models/veiculo'
 
 const router: Router = Router()
 
-// READ
-router.get('/', async(req, res) => {
-    const veiculos = await Veiculo.find({})
-    res.send(veiculos)
-})
+import * as veiculosController from '../controllers/veiculos'
 
-// READ ONE
-router.get('/:id', async(req, res) => {
-    const veiculo = await Veiculo.findOne({ _id: req.params.id })
-    res.send(veiculo)
-})
+
+router.get('/', veiculosController.get)
+
+router.get('/:id', veiculosController.getId)
 
 
 export default router

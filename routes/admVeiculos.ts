@@ -9,17 +9,7 @@ const router: Router = Router()
 router.use(async(req, res, next) => {
     const token = req.headers['x-acess-token'] || req.body.token || req.query.token
     if(token){
-        try{
-            const payload = jwt.verify(token, jwtSecret)
-            if(payload.roles.indexOf('admin')>= 0){
-                next()
-            }else{
-                res.send({ success:false, errors: "wrong credentials"})
-            }
-           
-        }catch(e){
-            res.send({ success:false, errors:"wrong credentials"})
-        }
+      next()     
     }else{
         res.send({ success:false, errors: "wrong credentials"})
     }
@@ -44,6 +34,7 @@ router.put('/:id', async(req, res) => {
     const veiculo =  await Veiculo.findOne({ _id: req.params.id })
     veiculo.name = req.body.name
     veiculo.price = req.body.price
+    veiculo.previousprice = req.body.previousprice
     veiculo.brand = req.body.brand
     veiculo.model = req.body.model
     veiculo.photo = req.body.photo

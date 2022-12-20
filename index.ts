@@ -4,11 +4,13 @@ const port = process.env.PORT
 const mongo = process.env.MONGODB
 import mongoose from 'mongoose'
 import * as user from './controllers/auth'
+import * as admVeiculos from './controllers/admVeiculos'
 
 mongoose
     .connect(mongo , { useNewUrlParser: true,  useCreateIndex: true, useUnifiedTopology: true })
     .then(()=> {
         user.createInitialUsers()
+        admVeiculos.createInitialVeiculos()
         app.listen(port, ()=>console.log('listening... at port ' + port))
     })
     .catch( e => console.log(e))

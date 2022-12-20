@@ -14,14 +14,6 @@ const createInitialUsers = async() => {
             roles: ['restrito', 'admin']
         })
         await user.save()
-
-        const user2 = new User({
-            name: 'Usuario Restrito',
-            email: 'restrito@gmail.com',
-            password: '123456',
-            roles: ['restrito']
-        })
-        await user2.save()
     }
 }
 
