@@ -1,7 +1,7 @@
 import "dotenv/config";
 import app from './app'
-const port = process.env.PORT
-const mongo = process.env.MONGODB
+const port = process.env.PORT || 4000
+const mongo = process.env.MONGODB || 'mongodb://localhost/car-showcase'
 import mongoose from 'mongoose'
 import * as user from './controllers/auth'
 import * as admVeiculos from './controllers/admVeiculos'
