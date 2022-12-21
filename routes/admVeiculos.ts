@@ -1,7 +1,5 @@
 import { Router } from "express"
 import Veiculo from '../models/veiculo'
-import jwt from 'jsonwebtoken'
-const jwtSecret: any = process.env.JWTSECRET
 
 const router: Router = Router()
 
